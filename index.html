@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+</head>
+<body>
+    <h2>Embedded Music Player</h2>
+    
+    <iframe id="musicPlayer" frameborder="0" width="500" height="100" 
+        src="https://drive.google.com/file/d/1YR9EMU1a2acTcT19zzhZbPEj5LFVYZoR/preview?usp=sharing">
+    </iframe>
+    
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/F6VYKDGvEEk?si=lJbdabW8DbA3wkTg" 
+    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+  
+    
+    <br><br>
+    <button onclick="nextSong()">Next Song</button>
+
+    <script>
+        // Array of Google Drive file IDs (Your MP3 Files)
+        const songs = [
+            "1YR9EMU1a2acTcT19zzhZbPEj5LFVYZoR",
+            "1qCFsplvmxelVfizN61t1K3NUimlB2NwR",
+            "1nG1XQGvQAia9uZ8JxUGnF3Wtf30-7Bm3"
+        ];
+
+        let currentIndex = 0; // Track current song index
+
+        function nextSong() {
+            // Move to the next song, loop back if at the end
+            currentIndex = (currentIndex + 1) % songs.length;
+
+            // Update iframe source to the next song
+            document.getElementById("musicPlayer").src = 
+                `https://drive.google.com/file/d/${songs[currentIndex]}/preview?usp=sharing`;
+        }
+    </script>
+</body>
+</html>
